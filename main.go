@@ -29,12 +29,6 @@ func UploadMultipartFile(client *http.Client, uri, key, path string) (*http.Resp
 	req.SetBasicAuth(api_secret_key, "")
 	
 	errchan := make(chan error)
-
-	 file, err := os.Open(path)
-	if err != nil {
-		
-	 	return  nil, err
-	 }
 		
 
 	go func() {
@@ -45,6 +39,12 @@ func UploadMultipartFile(client *http.Client, uri, key, path string) (*http.Resp
 
 		defer mwriter.Close()
 
+		
+		file, err := os.Open(path)
+		if err != nil {
+	 		return  nil, err
+	 	}
+		
 		defer file.Close()
 	
 
