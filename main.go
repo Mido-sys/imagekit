@@ -50,7 +50,7 @@ func UploadMultipartFile(client *http.Client, uri, key, path string) (*http.Resp
 	
 
 		err := mwriter.WriteField("fileName", file_name)
-		if err !nil {
+		if err != nil {
 			errchan <- err	
 			return 
 		}
